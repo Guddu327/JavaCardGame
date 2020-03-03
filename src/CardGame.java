@@ -121,7 +121,7 @@ public class CardGame {
 		Scanner sc = new Scanner(System.in);
 				
 		do {
-			System.out.println("Options :");
+			System.out.println("\nOptions :");
 			System.out.println("0 : Fill deck");
 			System.out.println("1 : Print deck");
 			System.out.println("2 : Shuffle deck");
