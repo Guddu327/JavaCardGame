@@ -4,6 +4,8 @@ public class CardGame {
 
 	ArrayList<Card> deck;
 	ArrayList<ArrayList<Card>> players;
+	static String[] value_name = {"Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King"};
+	static String[] house_name = {"SPADES","HEART","CLUB","DIAMONDS"};
 	static int options;
 	
 	private void fillDeck(ArrayList<Card> deck) {
@@ -67,7 +69,6 @@ public class CardGame {
 		for(int j=0;j<cg.players.get(i).size();j++)
 		{
 			cg.deck.add(0, cg.players.get(i).get(j));
-			System.out.println("Card added back to deck : " + cg.players.get(i).get(j).id);
 		}
 		cg.players.get(i).remove(0);
 	}
@@ -85,10 +86,12 @@ public class CardGame {
 		while(true)
 		{
 			giveCardToPlayer(cg, i, cg.deck);
+			System.out.println("Player " + (i+1) + " has " + value_name[cg.players.get(i).get(0).value-1] + " of " + house_name[cg.players.get(i).get(0).house]);
 			if(cg.players.get(i).get(0).house < winnerCard.house)
 			{
 				winner = i;
 				winnerCard = cg.players.get(i).get(0);
+				String number = "";// + cg.players.get(i).get(0).value;
 			}
 			else if(cg.players.get(i).get(0).house == winnerCard.house && cg.players.get(i).get(0).value > winnerCard.value)
 				winner = i;
@@ -100,6 +103,7 @@ public class CardGame {
 		{
 			returnCardFromPlayer(cg, i-1);
 			i--;
+			System.out.println("Cards added back to the bottom of the deck...");
 		}
 		return winner;
 	}
